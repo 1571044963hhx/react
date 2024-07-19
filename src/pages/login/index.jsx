@@ -1,0 +1,72 @@
+import React, { useState } from 'react';
+import { Form, Input, Button, notification, Row, Col } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import './index.scss';
+import { useNavigate } from 'react-router-dom';
+import { reqLogin } from '@/api/login';
+
+const App = () => {
+    const [loading, setLoading] = useState(false);
+    // 使用 useState 来管理表单字段的状态
+    const [form] = Form.useForm();
+    const navigate = useNavigate();
+
+    const onFinish = async (values) => {
+        setLoading(true);
+        try {
+            const result = await reqLogin(values)
+            console.log(result)
+            notification.success({
+                message: '欢迎回来',
+                description: '登录成功'
+            });
+            navigate.push('/home'); // 登录成功后跳转到 /home 路由
+        } catch (error) {
+            notification.error({
+                message: '登录失败',
+                description: error.message
+            });
+        } finally {
+            setLoading(false);
+        }
+    };
+    // 处理表单字段的变化
+    // 处理表单字段的变化
+    return (
+        <div className="login-container">
+            <Row>
+                <Col span={12} xs={12}></Col>
+                <Col span={12} xs={12}>
+                    <Form
+                        form={form}
+                        className="login-form"
+                        onFinish={onFinish}
+                        initialValues={{ username: 'admin', password: '111111' }}
+                    >
+                        <h1>Welcome 请坐！</h1>
+                        <h2>欢迎来到硅谷甄选</h2>
+                        <Form.Item
+                            name="username"
+                            rules={[{ required: true, message: '请输入用户名!' }, { min: 5, message: '账号长度至少五位' }]}
+                        >
+                            <Input prefix={<UserOutlined />} placeholder="用户名" />
+                        </Form.Item>
+                        <Form.Item
+                            name="password"
+                            rules={[{ required: true, message: '请输入密码!' }, { min: 5, message: '密码长度至少五位' }]}
+                        >
+                            <Input.Password prefix={<LockOutlined />} placeholder="密码" />
+                        </Form.Item>
+                        <Form.Item>
+                            <Button type="primary" htmlType="submit" loading={loading} className="login-btn">
+                                登录
+                            </Button>
+                        </Form.Item>
+                    </Form>
+                </Col>
+            </Row>
+        </div>
+    );
+};
+
+export default App;
