@@ -1,0 +1,17 @@
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    img {
+        height: 70px;
+        width: 70px;
+    }
+
+    span {
+        font-size: 25px;
+        margin-left: 20px;
+        letter-spacing: 4px;
+        color: white;
+
+    }
+}

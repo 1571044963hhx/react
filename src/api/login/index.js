@@ -2,7 +2,7 @@ import request from "../../utils/request";
 
 // 项目用户相关的请求地址
 const API = {
-    LOGIN_URL: '/api/admin/acl/index/login',
+    LOGIN_URL: '/admin/acl/index/login',
     USERINFO_URL: '/admin/acl/index/info',
     LOGOUT_URL: '/admin/acl/index/logout'
 };

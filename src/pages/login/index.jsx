@@ -3,7 +3,8 @@ import { Form, Input, Button, notification, Row, Col } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './index.scss';
 import { useNavigate } from 'react-router-dom';
-import { reqLogin } from '@/api/login';
+import { fetchLogin, fetchUserInfo } from '@/store/login';
+import { useDispatch } from 'react-redux'
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -11,16 +12,17 @@ const App = () => {
     const [form] = Form.useForm();
     const navigate = useNavigate();
 
+    const dispatch = useDispatch()
+
     const onFinish = async (values) => {
         setLoading(true);
         try {
-            const result = await reqLogin(values)
-            console.log(result)
+            await dispatch(fetchLogin(values))
             notification.success({
                 message: '欢迎回来',
                 description: '登录成功'
             });
-            navigate.push('/home'); // 登录成功后跳转到 /home 路由
+            navigate('/layout'); // 登录成功后跳转到 /home 路由
         } catch (error) {
             notification.error({
                 message: '登录失败',
