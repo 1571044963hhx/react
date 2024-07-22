@@ -1,0 +1,25 @@
+.right-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .right-top,
+    .right-middle,
+    .right-bottom {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+    }
+
+    .right-top {
+        background-color: #ddf;
+    }
+
+    .right-middle {
+        background-color: #cdf;
+    }
+
+    .right-bottom {
+        background-color: #ccf;
+    }
+}

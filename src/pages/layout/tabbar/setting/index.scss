@@ -1,0 +1,31 @@
+.tabbar_right {
+    display: flex;
+}
+
+.refresh,
+.fullScreen {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display:flex ;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.name {
+    justify-content: center;
+    align-items: center;
+    margin: 10px 30px 10px 10px;
+    color: white;
+}

@@ -1,0 +1,25 @@
+.left-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .left-top,
+    .left-middle,
+    .left-bottom {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+    }
+
+    .left-top {
+        background-color: #fdd;
+    }
+
+    .left-middle {
+        background-color: #fcd;
+    }
+
+    .left-bottom {
+        background-color: #fcc;
+    }
+}

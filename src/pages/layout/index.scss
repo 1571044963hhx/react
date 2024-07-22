@@ -1,0 +1,44 @@
+$top-ratio: 1;
+$bottom-ratio: 11;
+$left-ratio: 2;
+$right-ratio: 10;
+
+$top-height: (
+    $top-ratio / ($top-ratio + $bottom-ratio)) * 100vh; // 1/(1+11) * 100vh
+$bottom-height: (
+    $bottom-ratio / ($top-ratio + $bottom-ratio)) * 100vh; // 11/(1+11) * 100vh
+$left-width: (
+    $left-ratio / ($left-ratio + $right-ratio)) * 100vw; // 2/(2+10) * 100vw
+$right-width: (
+    $right-ratio / ($left-ratio + $right-ratio)) * 100vw; // 10/(2+10) * 100vw
+
+.container {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: $top-height $bottom-height;
+    grid-template-columns: $left-width $right-width;
+}
+
+.logo{
+    background-color:rgb(0,21,41);
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+}
+
+.tabbar {
+    background-color:green;
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+}
+
+.menu {
+    background-color:rgb(0,21,41);
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+}
+
+.main {
+    background-color: yellow;
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+}

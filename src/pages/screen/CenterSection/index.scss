@@ -1,0 +1,19 @@
+.center-section {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    height: 100%;
+
+    .center-top,
+    .center-bottom {
+        padding: 10px;
+        border: 1px solid #ccc;
+    }
+
+    .center-top {
+        background-color: #dfd;
+    }
+
+    .center-bottom {
+        background-color: #cfc;
+    }
+}
