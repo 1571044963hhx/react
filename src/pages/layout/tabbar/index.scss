@@ -2,7 +2,7 @@
 .tabbar {
     display: flex;
     width: 100%;  // 确保 tabbar 占满整个容器
-    justify-content: space-between !important;
+    justify-content: space-between;
     align-items: center;
     height: 100%; // 需要设置高度以实现垂直居中对齐
 }

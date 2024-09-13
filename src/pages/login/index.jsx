@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Form, Input, Button, notification, Row, Col } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './index.scss';
 import { useNavigate } from 'react-router-dom';
 import { fetchLogin, fetchUserInfo } from '@/store/login';
 import { useDispatch } from 'react-redux'
+import { useLocation } from 'react-router-dom';
 
 const App = () => {
     const [loading, setLoading] = useState(false);
     // 使用 useState 来管理表单字段的状态
     const [form] = Form.useForm();
     const navigate = useNavigate();
-
+    const location = useLocation();
     const dispatch = useDispatch()
 
     const onFinish = async (values) => {
@@ -19,13 +20,13 @@ const App = () => {
         try {
             await dispatch(fetchLogin(values))
             const res = await dispatch(fetchUserInfo())
-            console.log(res)
             notification.success({
                 message: '欢迎回来',
                 description: '登录成功'
             });
-            navigate('/'); // 登录成功后跳转到 /home 路由
-            
+            //路由守卫中的重定向
+            const from = location.state?.from || '/';
+            navigate(from, { replace: true });           
         } catch (error) {
             notification.error({
                 message: '登录失败',

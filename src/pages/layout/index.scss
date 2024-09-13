@@ -14,31 +14,39 @@ $right-width: (
 
 .container {
     display: grid;
-    height: 100vh;
     grid-template-rows: $top-height $bottom-height;
     grid-template-columns: $left-width $right-width;
+    height: 100vh;
 }
 
-.logo{
-    background-color:rgb(0,21,41);
+
+.logo {
+    background-color: rgb(0, 21, 41);
     grid-row: 1 / 2;
     grid-column: 1 / 2;
 }
 
 .tabbar {
-    background-color:green;
-    grid-row: 1 / 2;
-    grid-column: 2 / 3;
+    background-color: rgb(5, 177, 245);
 }
 
 .menu {
-    background-color:rgb(0,21,41);
+    background-color: rgb(0, 21, 41);
     grid-row: 2 / 3;
     grid-column: 1 / 2;
+    height: 100%;
+    position: sticky;
+    top: $top-height; 
 }
 
 .main {
-    background-color: yellow;
+    background-color:white;
     grid-row: 2 / 3;
     grid-column: 2 / 3;
+    overflow-y: auto; 
+
+    .box {
+        height: 1500px;
+        background-color: aqua;
+    }
 }

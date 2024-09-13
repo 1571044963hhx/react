@@ -1,52 +1,46 @@
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-
 import { useSelector } from 'react-redux';
-import ProgressBar from './ProgressBar'; // 进度条组件
 
-const RouteGuard = ({ children }) => {
-    const { userInfo } = useSelector((state) => state.user)
+import { useDispatch } from 'react-redux';
+import { userLogout, fetchUserInfo } from '@/store/login';
 
-    const [loading, setLoading] = useState(true);
-    const location = useLocation();
+const NavigationGuards = ({ children }) => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const dispatch = useDispatch();
+    const { token, userInfo } = useSelector((state) => state.user);
 
     useEffect(() => {
-        const handleNavigation = async () => {
-            setLoading(true);
-            if (userInfo) {
+        const handleNavigation = () => {
+            if (token) {
                 if (location.pathname === '/login') {
-                    userLogout(); // 用户已登录且试图访问登录页，执行登出
+                    dispatch(userLogout())
+                    navigate('/login');
                 } else {
-                    if (!user.username) {
+                    if (!userInfo) {
                         try {
-                            await userInfo();
-                            setLoading(false);
+                            dispatch(fetchUserInfo())
+                            navigate(location.pathname);
                         } catch (error) {
-                            await userLogout();
-                            navigate('/login', { replace: true });
+                            dispatch(userLogout())
+                            navigate('/login', { replace: true, state: { from: location.pathname } });
                         }
-                    } else {
-                        setLoading(false);
                     }
                 }
             } else {
                 if (location.pathname !== '/login') {
-                    navigate('/login', { replace: true });
+                    navigate('/login', { replace: true, state: { from: location.pathname } });
                 }
-                setLoading(false);
             }
         };
-
         handleNavigation();
-    }, [user, location, userLogout, userInfo, navigate]);
-
+    }, []);
     return (
         <>
-            <ProgressBar start={loading} finish={!loading} />
-            {loading ? <div>Loading...</div> : children}
+            {children}
         </>
-    );
+    )
 };
+export default NavigationGuards;
 
-export default RouteGuard;

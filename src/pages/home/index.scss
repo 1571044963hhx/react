@@ -1,0 +1,20 @@
+.title {
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.home-container {
+    height: 90vh;
+    width: 100%;
+    background-image: url('../../assets/icons/welcome.svg'); // 引用 SVG 图片
+    // background-size: cover; // 使背景图片覆盖整个页面
+    background-position: center; // 背景图片居中显示
+    background-repeat: no-repeat; // 禁止背景图片重复
+    background-color: white;
+
+}
+
+.card {
+    display: flex;
+    align-items: center;
+}

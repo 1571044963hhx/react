@@ -1,16 +1,19 @@
-import { useDispatch } from "react-redux"
-import { fetchUserInfo } from "@/store/login"
-import { Outlet } from "react-router-dom"
+import { Outlet, useLocation } from "react-router-dom"
 const Main = () => {
-    const dispatch = useDispatch()
-    const handler = async()=>{
-        await dispatch(fetchUserInfo())
-        console.log(1)
-    }
+    const location = useLocation();
+    console.log(location)
     return (
         <div className='main'>
-            <button onClick={handler}></button>
-            <Outlet/>
+            {/* {location.pathname === '/home' ? (
+                <div>
+                    <h1>Welcome to Home</h1>
+                </div>
+            ) : (
+                <div>
+                    <Outlet />
+                </div>
+            )} */}
+            <Outlet />
         </div>
     )
 }

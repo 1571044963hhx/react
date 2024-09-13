@@ -3,15 +3,13 @@ import {
     ContainerOutlined,
     DesktopOutlined,
     PieChartOutlined,
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
 } from '@ant-design/icons';
-
-
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { Menu } from 'antd';
+import { useMemo } from 'react';
 
-import { Button, Menu } from 'antd';
-import React, { useState } from 'react';
 import './index.scss'
 function getItem(label, key, icon, children, type) {
     return {
@@ -22,7 +20,8 @@ function getItem(label, key, icon, children, type) {
         type,
     };
 }
-const items = [
+
+const allItems = [
     getItem('首页', '/', <PieChartOutlined />),
     getItem('数据大屏', '/screen', <DesktopOutlined />),
     getItem('权限管理', '/acl', <ContainerOutlined />, [
@@ -38,20 +37,25 @@ const items = [
     ])
 ];
 
-
 const Menu1 = () => {
-    const [collapsed, setCollapsed] = useState(false);
-
-    const toggleCollapsed = () => {
-        setCollapsed(!collapsed);
-    };
+    const { userInfo } = useSelector((state) => state.user)
+    const { routes } = useSelector((state) => state.user.userInfo)
+    console.log(userInfo.routes)
+    console.log(routes)
     const navigate = useNavigate()
+    // const filterItems = (items, routes) => {
+    //     return items.filter(item => {
+    //         if (item.children) {
+    //             item.children = filterItems(item.children, routes);
+    //             return item.children.length > 0;
+    //         }
+    //         return routes.some(route => item.key.endsWith(route));
+    //     });
+    // };
+    // const filteredItems = useMemo(() => filterItems(allItems, routes), [routes]);
     const handler = (value) => {
-        console.log(value)
         navigate(value.key)
     }
-
-
     return (
         <div
             className='menu'
@@ -61,14 +65,10 @@ const Menu1 = () => {
                 defaultOpenKeys={['sub1']}
                 mode="inline"
                 theme="dark"
-                inlineCollapsed={collapsed}
-                items={items}
+                items={allItems}
                 onSelect={handler}
                 className='menu_top'
             />
-            <Button type="primary" onClick={toggleCollapsed}>
-                {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            </Button>
         </div>
     );
 };

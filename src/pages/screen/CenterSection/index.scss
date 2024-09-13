@@ -1,19 +1,63 @@
 .center-section {
     display: grid;
-    grid-template-rows: 2fr 1fr;
+    grid-template-rows: 2fr;
     height: 100%;
 
-    .center-top,
-    .center-bottom {
+    .center-top {
         padding: 10px;
         border: 1px solid #ccc;
     }
 
     .center-top {
         background-color: #dfd;
-    }
 
-    .center-bottom {
-        background-color: #cfc;
+        .basicInfo {
+            width: 95%;
+            margin: 10px auto;
+            padding: 10px 10px 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            border-collapse: collapse;
+            /* 合并边框 */
+        }
+
+        .basicInfo table {
+            width: 100%;
+            border-collapse: collapse;
+
+        }
+
+        .basicInfo td {
+            padding: 10px 30px;
+            text-align: left;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            // font-weight: bold;
+            border: 1px solid black;
+            /* 为所有单元格添加边框 */
+        }
+
+        .basicInfo tr:nth-child(even) {
+            background-color: #f2f2f2;
+            /* 每行交替的背景颜色 */
+        }
+
+        .basicInfo tr:hover {
+            background-color: #abbfc9;
+            /* 鼠标悬停的背景颜色 */
+        }
+
+        .merged {
+            padding-left: 20px !important;
+            font-size: 20px !important;
+            background-color:aqua;
+            border-radius: 20px;
+            font-weight: bolder;
+        }
+        .bold {
+            font-size: larger !important;
+            font-weight: bold;
+        }
     }
 }

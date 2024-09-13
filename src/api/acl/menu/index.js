@@ -26,4 +26,4 @@ export const reqAddOrUpdateMenu = (data) => {
 };
 
 // 删除某一个已有的菜单
-export const reqRemoveMenu = (id) => axios.delete(API.DELETEMENU_URL + id);
+export const reqRemoveMenu = (id) => request.delete(API.DELETEMENU_URL + id);

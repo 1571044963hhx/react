@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import userReducer from './login/index'
-import routesReducer from './routes'
+import userReducer from './login'
+import categoryReducer from './category'
 
 export const store = configureStore({
     reducer: {
         // 注册子模块
         user: userReducer,
-        routes: routesReducer
+        category: categoryReducer
     }
 })

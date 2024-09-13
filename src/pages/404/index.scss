@@ -1,0 +1,45 @@
+$primary-color: #ff6f61;
+$background-color: #f0f0f0;
+$text-color: #333;
+$font-family: 'Roboto', sans-serif;
+
+.not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: $background-color;
+    font-family: $font-family;
+    color: $text-color;
+
+    .not-found-content {
+        text-align: center;
+
+        .not-found-title {
+            font-size: 10rem;
+            margin: 0;
+            color: $primary-color;
+        }
+
+        .not-found-message {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .not-found-home-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            color: #fff;
+            background-color: $primary-color;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: darken($primary-color, 10%);
+            }
+        }
+    }
+}

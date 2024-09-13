@@ -1,7 +1,11 @@
 import { MyIcon } from '@/assets/icons/myIcon';
-import React from 'react';
 import "./index.scss"
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { DownOutlined } from '@ant-design/icons';
+import { Dropdown, Menu } from 'antd';
+import { userLogout } from '@/store/login';
+import { useNavigate } from 'react-router-dom';
+
 
 const Setting = () => {
     //刷新功能
@@ -16,25 +20,48 @@ const Setting = () => {
             document.exitFullscreen();
         }
     }
-    const { name, avatar, buttons } = useSelector((state) => state.user.userInfo)
-    console.log(name)
+    
+
+    //退出登录
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const userlogout = async () => {
+        await dispatch(userLogout())
+        navigate('/login')
+    }
+
+    const { name, avatar } = useSelector((state) => state.user.userInfo)
+    const a = useSelector((state) => state.user.userInfo)
+    console.log(a,'jgh')
+
+    const menu = (
+        <Menu>
+            <Menu.Item key="logout" onClick={userlogout}>
+                退出登录
+            </Menu.Item>
+        </Menu>
+    );
 
     return (
         <div className="tabbar_right">
             <div className='refresh' onClick={refreshPage}>
-                <MyIcon type="icon-shuaxin1" style={{ fontSize: '15px' }} />
+                <MyIcon className="icon" type="icon-shuaxin1" style={{ fontSize: '15px' }} />
             </div>
             <div className='fullScreen' onClick={toggleFullscreen}>
-                <MyIcon type="icon-quanping" style={{ fontSize: '12px' }} />
+                <MyIcon className="icon" type="icon-quanping" style={{ fontSize: '12px' }} />
             </div>
-            <div className='fullScreen' onClick={toggleFullscreen}>
-                <MyIcon type="icon-shezhi" style={{ fontSize: '12px' }} />
+            <div className='fullScreen'>
+                <MyIcon className="icon" type="icon-shezhi" style={{ fontSize: '12px' }} />
             </div>
             <div className='avatar'>
                 <img src={avatar} alt="Avatar" style={{ width: '20px', height: '20px', borderRadius: '50%' }} />
             </div>
             <div className='name'>
-                <span>{name}</span>
+                <Dropdown overlay={menu}>
+                    <span>{name}
+                        <DownOutlined />
+                    </span>
+                </Dropdown>
             </div>
         </div>
     )

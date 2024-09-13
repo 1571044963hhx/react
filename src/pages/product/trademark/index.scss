@@ -1,0 +1,61 @@
+// trademark.scss
+
+// 全局变量
+$primary-color: #1890ff;
+$button-hover-color: darken($primary-color, 10%);
+$card-padding: 20px;
+$table-border-color: #e8e8e8;
+$modal-padding: 20px;
+
+// 卡片样式
+.box-card {
+    padding: $card-padding;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.addTrademark {
+    width: 120px;
+    height: 40px;
+}
+.btn{
+    margin: 20px 0px 0px 20px;
+}
+
+// 表格样式
+.ant-table {
+    margin: 10px 0;
+    border: 1px solid $table-border-color;
+    border-radius: 8px;
+
+    .ant-table-thead>tr>th {
+        background-color: $primary-color;
+        color: #fff;
+        text-align: center;
+    }
+
+    .ant-table-tbody>tr>td {
+        text-align: center;
+    }
+
+    img {
+        width: 100px;
+        height: 100px;
+        border-radius: 8px;
+    }
+}
+
+// 分页器样式
+.ant-pagination {
+    margin-top: 10px;
+    text-align: center;
+}
+
+// 对话框样式
+.ant-modal {
+    .ant-modal-content {
+        padding: $modal-padding;
+        border-radius: 8px;
+    }
+}

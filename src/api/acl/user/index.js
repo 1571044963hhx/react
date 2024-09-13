@@ -21,7 +21,7 @@ const API = {
 
 // 获取用户账号信息的接口
 export const reqUserInfo = (page, limit, username) =>
-    request.get(`${API.ALLUSER_URL}${page}/${limit}/?username=${username}`);
+  request.get(`${API.ALLUSER_URL}${page}/${limit}/?username=${username}`);
 
 // 添加用户与更新已有用户的接口
 export const reqAddOrUpdateUser = (data) => {
@@ -34,17 +34,17 @@ export const reqAddOrUpdateUser = (data) => {
 };
 
 // 获取全部职位以及包含当前用户的已有的职位
-export const reqAllRole = (userId) =>
-    request.get(`${API.ALLROLEURL}${userId}`);
+export const reqSetRole = (userId) =>
+  request.get(`${API.ALLROLEURL}${userId}`);
 
 // 分配职位
-export const reqSetUserRole = (data) =>
-    request.post(API.SETROLE_URL, data);
+export const reqSetRoles = (data) =>
+  request.post(API.SETROLE_URL, data);
 
 // 删除某一个账号的信息
-export const reqRemoveUser = (userId) =>
-    request.delete(`${API.DELETEUSER_URL}${userId}`);
+export const reqDeleteUser = (userId) =>
+  request.delete(`${API.DELETEUSER_URL}${userId}`);
 
 // 批量删除的接口
-export const reqSelectUser = (idList) =>
-    request.delete(API.DELETEALLUSER_URL, { data: idList });
+export const reqBatchRemove = (idList) =>
+  request.delete(API.DELETEALLUSER_URL, { data: idList });

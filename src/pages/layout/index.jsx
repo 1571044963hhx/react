@@ -2,10 +2,10 @@ import Main from "./main"
 import Menu1 from "./menu"
 import Tabbar from "./tabbar"
 import Logo from "./logo"
-import './index.scss'
 import { useEffect } from "react"
 import { fetchUserInfo } from "@/store/login"
 import { useDispatch } from "react-redux"
+import './index.scss'
 
 
 const Layout = () => {

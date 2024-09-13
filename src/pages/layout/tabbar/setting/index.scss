@@ -7,7 +7,7 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    display:flex ;
+    display: flex;
     background-color: white;
     justify-content: center;
     align-items: center;
@@ -28,4 +28,12 @@
     align-items: center;
     margin: 10px 30px 10px 10px;
     color: white;
+}
+
+.fullScreen .icon {
+    transition: color 0.5s;
+}
+
+.fullScreen:hover .icon {
+    color: #f39c12;
 }
